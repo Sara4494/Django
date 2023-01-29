@@ -1,0 +1,18 @@
+اول امر انشاء بيئة افتراضية
+virtualenv 'اسم البيئة الافتراضية'
+
+تشغيل البيئة الافتراضية
+.\venv\Scripts\activate
+
+تنزيل django
+pip install django
+
+انشاء مشروع
+django-admin startproject 'اسم المشروع'
+
+انشاء تطبيق
+django-admin startapp electrp
+python manage.py startapp electro
+
+اضافة التطبيق الى التطبيقات المسجلة بال settings
+
