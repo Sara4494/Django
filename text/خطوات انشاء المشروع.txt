@@ -8,11 +8,13 @@ virtualenv 'اسم البيئة الافتراضية'
 pip install django
 
 انشاء مشروع
-django-admin startproject 'اسم المشروع'
+django-admin startproject 'project'
 
 انشاء تطبيق
-django-admin startapp electrp
-python manage.py startapp electro
+python manage.py startapp app
 
 اضافة التطبيق الى التطبيقات المسجلة بال settings
+
+انشاء مستخدم بكل الصلاحيات (super user)
+python manage.py createsuperuser
 

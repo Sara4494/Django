@@ -1,0 +1,26 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+    <div class="container">
+        
+        {% for product in all_prod %}
+            
+        <div class="card">
+            <div class="card-header text-center">
+                <h4> اسم المنتج : 
+                    {{product.name}}
+                </h4>
+            </div>
+            <div class="card-body">
+                <p>
+                    السعر : {{product.price}}
+                </p>
+                <img class="card-img-top" src="{{ product.image.url }}" alt="">
+            </div>
+        </div>
+        
+        {% endfor %}
+    </div>
+{% endblock content %}
+    
