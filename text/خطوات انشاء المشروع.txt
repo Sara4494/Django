@@ -18,3 +18,5 @@ python manage.py startapp app
 انشاء مستخدم بكل الصلاحيات (super user)
 python manage.py createsuperuser
 
+مسار الفورم الخاصة بتسجيل الدخول وتسجيل الخروج وتغيير كلمة المرور
+C:\Users\elmooo\Desktop\Django\venv_django\Lib\site-packages\django\contrib\admin\templates\registration

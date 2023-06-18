@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load bootstrap5 %}
+{% load static %}
+{% block title %}
+   
+{{title}}
+{% endblock title %}
+    
+{% block main %}
+{% load bootstrap5 %}
+ {{request.user}}
+  
+<div class="row">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'forms/form_bootstrap.html' %}
+    
+        
+        <button class="btn btn-outline-success" type="submit">
+            حفظ
+        </button>
+    </form>
+ 
+ {% if user.is_authenticated %}
+
+	<h3 type="button" class="text-center"><a href="	{% url 'profil' home.id%}"></a> Welcome : {{ user.username }}</h3>
+{% endif %}
+</div>
+{% endblock main %}
+    

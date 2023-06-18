@@ -1,0 +1,29 @@
+{% extends "base.html" %} 
+{% load bootstrap5 %} {% block formuser %} {% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %} {% if next %} {% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %} {% endif %}
+
+<form method="post" class="form-control" action="{% url 'login' %}">
+    {% csrf_token %} {% bootstrap_form form %}
+
+    <input class="align-content-end btn btn-outline-success" type="submit" value="login" />
+    <input type="hidden" name="next" value="{{ next }}" />
+
+    <a href="{% url 'admin:login' %}"  class="align-content-end btn btn-outline-success"> Admin</a>
+    {# Assumes you setup the password_reset view in your URLconf #}
+        
+    <a href="{% url 'register_customer' %}"  class="align-content-end btn btn-outline-success">تسجيل كـ عميل</a>
+    <a href="{% url 'password_reset' %}"  class="align-content-end btn btn-outline-success"> Lost password?</a>
+        <br> {% endblock formuser %}
+
+        
+
+
+</form>
+ 
+
+ 

@@ -1,0 +1,20 @@
+{% extends "base.html" %} {% load static %} {% block formuser %} {% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %} {% if next %} {% if user.is_authenticated %}
+<p>Your account doesn't have access to this page. To proceed, please login with an account that has access.</p>
+{% else %}
+<p>Please login to see this page.</p>
+{% endif %} {% endif %}
+<div>
+
+</div>
+<form method="post" class="form-control text-center" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <input class="align-content-end btn btn-success shadow-sm" type="submit" value="تسجيل الدخول" />
+    <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">هل نسيت كلمة المرور </a></p>
+<br> {% endblock formuser %}

@@ -1,26 +1,48 @@
 {% extends 'index.html' %}
-
+{% load static %}
 
 {% block content %}
     <div class="container">
-        
-        {% for product in all_prod %}
-            
-        <div class="card">
-            <div class="card-header text-center">
-                <h4> اسم المنتج : 
-                    {{product.name}}
-                </h4>
+        <div class="row">
+            {% for product in all_prod %}
+            <div class="col-4">
+                <div class="card shadow-lg">
+                    <div class="card-header text-center text-light bg-dark">
+                        <h4> اسم المنتج : 
+                            <a href="{% url 'product_detail' product.slug %}">{{product.name}}</a>
+                            
+                        </h4>
+                    </div>
+                    
+                    <div class="card-body">
+                        <p>
+                            السعر : {{product.price}}
+                            <hr>
+                            {% if product.magmo3a.name == "اجهزة كومبيوتر" %}
+                                اجهزةةةةةةةةةةةةةةةةة
+                            {% elif product.magmo3a.name == "لابتوب" %}
+                                لابتوبببببببببببببببببب
+                            {% endif %}
+                            <hr>
+                            المجموعة نوع: {{product.magmo3a.type_magmo3a}}
+                        </p>
+                        
+                        {% for tag in product.tag.all %}
+                           Tag : {{tag}} <br>
+                        {% endfor %}
+                            <form action="">
+
+                            </form>
+                        {% if product.image %}
+                        <img class="card-img-top" height="180px" src="{{ product.image.url }}" alt="">
+                        {% else %}
+                        <img class="card-img-top" height="180px" src="{% static 'img/original.png' %}" alt="">
+                        {% endif %}
+                    </div>
+                </div>
             </div>
-            <div class="card-body">
-                <p>
-                    السعر : {{product.price}}
-                </p>
-                <img class="card-img-top" src="{{ product.image.url }}" alt="">
-            </div>
+            {% endfor %}
         </div>
-        
-        {% endfor %}
     </div>
 {% endblock content %}
     

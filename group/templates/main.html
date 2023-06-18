@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ar"dir="rtl" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ماركت الزهراء</title>
+	 
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <script type="text/javascript">
+            var user = '{{ request.user }}';
+           function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getCookie('csrftoken');
+    </script>
+
+</head>
+<body>
+    {% include 'Nav_footr/nav.html' %}
+
+         <div class="container">
+                <br>
+                {% block content %}
+
+
+                 {% endblock content %}
+         </div>
+
+   
+     <script src="{% static 'js/cart.js' %}"></script>
+      <script src="{% static 'js/cdnjs.cloudflare.com_ajax_libs_popper.js_1.11.0_umd_popper.min.js' %}"></script>
+        <script src="{% static 'js/code.jquery.com_jquery-3.7.0.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap.js' %}"></script>
+        <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+   <script script="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+	<script script="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+	
+    <script script="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script> 
+        {% for dev in products  %}
+            $(".cat{{ dev.category.id }}").click(function(){
+    
+            $(".devkh").hide()
+            $(".dev{{dev.category.id}}").show()
+            });
+        {% endfor %}
+        {% for dev in items  %}
+            $(".cat{{ dev.product.category.id }}").click(function(){
+    
+            $(".devkh").hide()
+            $(".dev{{dev.product.category.id}}").show()
+            });
+        {% endfor %}
+         
+         
+    </script>
+</body>
+</html> 

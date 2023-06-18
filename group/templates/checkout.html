@@ -1,0 +1,83 @@
+
+ 
+
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="box-element" id="form-wrapper">
+		<form id="form">
+			<div id="user-info">
+				<div class="  m-1" >
+					
+					<p>الاسم بالكامل (الاسم الأول واسم العائلة)</p>   
+						<input  required class="form-control" type="text" name="name" placeholder="Name..">
+				</div>	<div class="  m-1" >
+				<div class="  m-1" >
+					
+				<p>ارقم الهاتف المحمول <p>   
+					<input  required class="form-control" type="text" name="phone" placeholder="01XXXXXXXXX">
+				</div>
+				
+				
+				<p> اسم الشارع  </p>   
+					<input  required class="form-control" type="text" name="street_name" >
+				</div>	<div class="  m-1" >
+			
+				<p> اسم/رقم المبنى </p>   
+					<input  required class="form-control" type="text" name="building_number" >
+				</div>	<div class="  m-1" >
+
+				<p> الحي   </p>   
+					<input  required class="form-control" type="text" name="district"  >
+				</div>
+
+				
+			</div>
+	
+	 
+			<hr>
+			<input id="form-button" class="btn btn-success btn-block" type="submit" value="Continue">
+		</form>
+ 
+
+
+		</div>
+		
+	</div>
+ 
+
+	<div class="col-lg-6">
+		<div class="box-element">
+		<div class="box-element">
+	<a  class="btn btn-outline-dark" href="{% url 'cart' %}">&#x2190; Back to Cart</a>
+	<hr>
+	<h3>Order Summary</h3>
+	<hr>
+	{% for item in items %}
+	<div class="cart-row">
+		<div style="flex:2"><img class="row-image" src="{{item.product.imageURL}}" style="width: 60px; height: 70px;"></div>
+		<div style="flex:2"><p>{{ item.product.name }}</p></div>
+		<div style="flex:1"><p>{{ item.product.price|floatformat:2 }}</p></div>
+		<div style="flex:1"><p>x2{{ item.quantity }}</p></div>
+	</div>
+	{% endfor %}
+	<h5>Items: {{order.get_cart_items}}</h5>
+	<h5>Total:   ${{order.get_cart_total|floatformat:2}}</h5>
+</div>
+		
+
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	var shipping = '{{order.shipping}}'
+	if(shipping == 'Felse'){
+		document.getElementById('shipping-info').innerHTML = ''
+	}
+</script>
+
+{% endblock content %}

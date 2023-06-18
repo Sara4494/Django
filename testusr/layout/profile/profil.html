@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<section class="user-dashboard page-wrapper">
+    <div class="container">
+      <div class="row">
+ 
+
+        <div class="col-md-12">
+          
+          <div class="dashboard-wrapper dashboard-user-profile">
+            <div class="media">
+              <div class="pull-left text-center" href="#!">
+                 {% if book.photo_book %}
+                    <img class="media-object user-img" src="{{profil.image.url}}" alt="Image">
+                  {% else %}
+                  
+                    <img class="media-object user-img" src="{% static 'images/original.png'%}" alt="Image">
+
+                  {% endif %}
+
+                <a href="#x" class="btn btn-transparent mt-20">Change Image</a>
+              </div>
+              <div class="media-body">
+                <ul class="user-profile-list">
+                  <li><span>First Name:</span>{{profil.user}}</li>
+                  
+                  <li><span>Country:</span>{{dev.addres}}</li>
+                  <li><span>Email:</span>{{user.email}}</li>
+                  <li><span>Phone:</span>{{profil.phone_number}}</li>
+                  <li><span>phone2:</span>{{profil.phone_number2}}</li>
+
+                  
+                </ul>
+
+              </div>
+            </div>
+          </div>
+        </div>
+     
+      </div>
+
+    </div>
+  </section>
+{% endblock content %}

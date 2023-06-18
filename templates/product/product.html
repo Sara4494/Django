@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+
+        <h1>Product {{all_prod.count}}</h1>
+        <form action="" method="POST" novalidate>
+            {% csrf_token %}
+            {{form2.as_div }}
+            <button class="btn btn-success" type="submit">حفظ</button>
+        </form>
+    </div>
+{% endblock content %}

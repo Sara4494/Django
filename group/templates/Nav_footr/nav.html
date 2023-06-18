@@ -1,0 +1,170 @@
+{% load static %}
+
+
+
+<center>
+  <div class="logo">
+    <h2 class="text-white m-3">مرحبا بك في الزهراء ماركت</h2>
+    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-shop-window text-white" viewBox="0 0 16 16">
+      <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h12V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zm2 .5a.5.5 0 0 1 .5.5V13h8V9.5a.5.5 0 0 1 1 0V13a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9.5a.5.5 0 0 1 .5-.5z"/>
+    </svg>
+</div>
+</center>
+
+<br>
+ 
+ 
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<div class="container-fluid">
+  <a class="navbar-brand " href="{% url 'store' %}">الصفحة الرئيسية</a>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+        <a class="nav-link active" aria-current="page" href="#">العروض</a>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          جميع الاقسام
+        </a>
+        <ul class="dropdown-menu">
+
+          {% for cat in Category %}
+            <li class="cat{{cat.id}}">
+              <a id="" class="dropdown-item " href="#">{{cat.name}}</a>
+            </li>
+
+					 
+		      {% endfor %}
+          
+
+<!--
+          <li><a class="dropdown-item" href="#">البان</a></li>
+          <li><a class="dropdown-item" href="#"></a>بقالة</li>
+          <li><a class="dropdown-item" href="#"></a>سلع اساسية</li>
+          <li><a class="dropdown-item" href="#"></a>تلاجة اللحوم</li>
+          <li><a class="dropdown-item" href="#"></a>تلاجة الجبن</li>
+          <li><a class="dropdown-item" href="#"></a>توابل وبقوليات</li>
+          <li><a class="dropdown-item" href="#"></a>ياميش</li>
+          <li><a class="dropdown-item" href="#"></a>شاي,قهوة</li>
+          <li><a class="dropdown-item" href="#"></a>شيبسي,حلويات</li>
+          <li><a class="dropdown-item" href="#"></a>صلصة,صوصات</li>
+          <li><a class="dropdown-item" href="#"></a>عصائر,بيبسي</li>
+          <li><a class="dropdown-item" href="#"></a>معلبات</li>
+          <li><a class="dropdown-item" href="#"></a>منظفات</li>-->
+        </ul>
+      </li>
+    </ul>
+    
+    <div class="d-inline-flex">
+      <button type="button" class="btn btn-outline-success mr-2">
+
+        <a href="{% url 'cart' %}" class="d-flex align-items-center">
+          <p id="cart-total" class="ml-2 m-1">{{cartItems}}</p>
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="30" height="20" fill="white" class="bi bi-cart4" viewBox="0 0 16 16" style="display: inline-block;">
+            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/> 
+
+          </svg>
+          <span class="ml-2 text-white">سله التسوق</span>
+        </a>
+      </button>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="بحث" aria-label="بحث">
+        <button class="btn btn-outline-success" type="submit">بحث</button>
+      </form>
+    </div>
+  </div>
+</div>
+</nav>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     
+    
+   
+
+       
+          
+        
+
+
+
+	 
+
+
+
+
+
+
+          
+             
+
+
+
+
+
+
+
+
+
+
+<!--
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="{% url 'store' %}">Ecom</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'store' %}">Store <span class="sr-only">(current)</span></a>
+      </li>
+ 
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+     	<a href="#"class="btn btn-warning">Login</a>
+     	
+     	<a href="{% url 'cart' %}">
+    		<img id="cart-icon" src="{% static 'images/cart.png' %}">
+    	</a>
+    	<p id="cart-total">{{cartItems}}</p>
+
+    </div>
+  </div>
+</nav>-->
+
+
+
+
+
+
+
+
+
+
+
